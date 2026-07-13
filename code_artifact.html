@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobby Bridge : SSAFY 광주 1반 주말 취미 메이트</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              200: '#bae0fd',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a',
+            }
+          },
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Pretendard CDN 연동 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Pretendard', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .fancy-font {
+      font-family: 'Fredoka', 'Gowun Dodum', sans-serif;
+    }
+    /* 타이틀/포인트를 위한 깔끔한 고운돋움 폰트 매칭 */
+    .handwriting-font {
+      font-family: 'Gowun Dodum', sans-serif;
+      font-weight: 800;
+    }
+    /* 스크롤바 커스텀 */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    /* 글래스모피즘 효과 */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    /* 둥둥 뜨는 반짝이 애니메이션 */
+    @keyframes float-bubble {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-12px) scale(1.04); }
+    }
+    .float-anim {
+      animation: float-bubble 5s ease-in-out infinite;
+    }
+    .keycap-spring {
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-brand-50 via-white to-brand-100 text-slate-800 min-h-screen selection:bg-brand-200 overflow-x-hidden">
+
+  <!-- Floating Navigation -->
+  <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl glass-card rounded-full px-6 py-3.5 shadow-xl flex justify-between items-center transition-all duration-300">
+    <a href="#" class="fancy-font text-xl font-black text-brand-600 flex items-center gap-2">
+      <i data-lucide="sparkles" class="w-5 h-5 text-brand-500 animate-pulse"></i>
+      <span class="bg-gradient-to-r from-brand-600 to-indigo-600 bg-clip-text text-transparent">HobbyBridge</span>
+    </a>
+    <div class="flex items-center gap-1 sm:gap-3 text-xs sm:text-sm font-bold text-slate-600">
+      <a href="#about" class="hover:text-brand-600 px-2 sm:px-3 py-1.5 rounded-full transition hover:bg-brand-50">소개</a>
+      <a href="#recommendations" class="hover:text-brand-600 px-2 sm:px-3 py-1.5 rounded-full transition hover:bg-brand-50 text-brand-600">취미찾기</a>
+      <a href="#active-hobbies" class="hover:text-brand-600 px-2 sm:px-3 py-1.5 rounded-full transition hover:bg-brand-50">Active</a>
+      <a href="#movies" class="hover:text-brand-600 px-2 sm:px-3 py-1.5 rounded-full transition hover:bg-brand-50">Culture</a>
+      <a href="#alcohol" class="hover:text-brand-600 px-2 sm:px-3 py-1.5 rounded-full transition hover:bg-brand-50">Drink</a>
+      <a href="#talk" class="bg-gradient-to-r from-brand-500 to-indigo-500 hover:from-brand-600 hover:to-indigo-600 text-white px-3 sm:px-4 py-1.5 rounded-full transition shadow-md hover:shadow-lg">메이트매칭</a>
+    </div>
+  </nav>
+
+  <!-- 1. HERO SECTION -->
+  <header class="relative pt-36 pb-24 md:pt-48 md:pb-40 flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+    <div class="absolute -top-20 -left-20 w-96 h-96 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-55 animate-pulse"></div>
+    <div class="absolute top-40 -right-20 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-45 animate-pulse" style="animation-delay: 3s;"></div>
+    <div class="absolute bottom-10 left-1/3 w-80 h-80 bg-rose-100 rounded-full mix-blend-multiply filter blur-3xl opacity-35 animate-pulse" style="animation-delay: 1.5s;"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black bg-gradient-to-r from-brand-100 to-indigo-100 text-brand-800 mb-8 uppercase tracking-widest shadow-md border border-white/60 animate-bounce">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand-600 animate-ping"></span>
+        SSAFY 광주 1반 주말 메이트 아카이브 💙
+      </span>
+      
+      <h1 class="text-4xl sm:text-7xl font-extrabold text-slate-900 tracking-tight leading-none mb-10">
+        <span class="block bg-gradient-to-r from-brand-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4 pb-2">나를 채우는 주말의 속도,</span>
+        <span class="block text-slate-900 mt-2">우리를 잇는 소통의 온도</span>
+      </h1>
+      
+      <p class="text-lg sm:text-xl text-slate-600 font-medium max-w-3xl mx-auto mb-12 leading-relaxed">
+        아직 뚜렷한 주말 취미가 없으신가요? 이곳에서 완벽한 힐링을 찾아보세요!<br class="hidden sm:block">
+        이미 즐거운 취미가 있다면, 동료들에게 자랑하고 크루를 모아 주말을 함께 누려봐요.
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-5">
+        <a href="#recommendations" class="group flex items-center justify-center gap-2 px-10 py-5 rounded-2xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white font-bold shadow-xl hover:shadow-brand-300 transition-all duration-300 hover:-translate-y-1">
+          <span>내 취미 찾기</span>
+          <i data-lucide="search" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+        </a>
+        <a href="#talk" class="flex items-center justify-center gap-2 px-10 py-5 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold shadow-md hover:bg-slate-50 transition-all duration-300 hover:-translate-y-1 hover:border-slate-300">
+          <span>주말 메이트 모집하기</span>
+          <i data-lucide="users" class="w-5 h-5 text-brand-500"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. PLATFORM INTRO SECTION -->
+  <section id="about" class="py-12 px-4 max-w-5xl mx-auto">
+    <div class="glass-card rounded-[36px] p-8 md:p-14 shadow-2xl flex flex-col md:flex-row gap-10 items-center relative overflow-hidden border border-white/80">
+      <div class="absolute top-0 right-0 w-44 h-44 bg-brand-100 rounded-bl-full opacity-40"></div>
+      
+      <!-- 대형 물음표 이모티콘 블록 -->
+      <div class="w-40 h-40 md:w-52 md:h-52 rounded-[32px] shadow-2xl shrink-0 relative group float-anim bg-gradient-to-tr from-brand-500 via-indigo-600 to-pink-500 flex items-center justify-center">
+        <span class="text-7xl md:text-8xl font-black text-white drop-shadow-[0_4px_12px_rgba(255,255,255,0.4)] select-none animate-bounce" style="animation-duration: 3s;">❓</span>
+        <div class="absolute -bottom-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 px-4 py-1.5 rounded-full text-xs font-black shadow-md border border-white uppercase tracking-widest">
+          WHO AM I?
+        </div>
+      </div>
+      
+      <div class="flex-1 space-y-5 text-center md:text-left">
+        <h3 class="handwriting-font text-3xl md:text-4xl font-bold text-brand-600 flex items-center justify-center md:justify-start gap-2">
+          "따로 또 같이, 더 단단해지는 광주 1반" 🤝
+        </h3>
+        <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+          안녕하세요! 평일 내내 여러분 곁에서 모니터 앞 코딩 열기를 함께 불태우고 있는 1반의 한 동료입니다. <br>
+          비록 평소에는 수줍어 묵묵히 코딩하지만, 주말이 되면 시원하게 트랙을 달리며, 밤에는 ott를 보며 힐링하곤 해요. <br>
+          이 즐거운 주말 에너지를 혼자만 즐기기 너무 아쉬워서, 뜻이 맞는 광주 1반 메이트들과 "같이 그리고 함께" 나누고 싶어 용기 내어 이 공간을 제안해 봅니다. 제 이야기들을 살펴보고 '나랑 좀 맞는데?' 싶다면 주저하지 말고 같이 주말을 함께 누려봐요!
+        </p>
+        
+        <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-3">
+          <span class="px-4 py-2 rounded-full text-xs font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="compass" class="w-4 h-4"></i> 맞춤형 주말 취미 탐색
+          </span>
+          <span class="px-4 py-2 rounded-full text-xs font-extrabold bg-amber-50 text-amber-700 border border-amber-100 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="sparkles" class="w-4 h-4"></i> 온/오프라인 동기 크루 결성
+          </span>
+          <span class="px-4 py-2 rounded-full text-xs font-extrabold bg-purple-50 text-purple-700 border border-purple-100 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="smile" class="w-4 h-4"></i> 무비 & 치맥 감성 친목회
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. HOBBY DISCOVERY & RECOMMENDATION SECTION -->
+  <section id="recommendations" class="py-24 bg-slate-50 px-4 relative">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-brand-100 text-brand-700 mb-4 tracking-widest uppercase shadow-sm">FIND YOUR TEMPERATURE</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">당신에게 어울리는 주말 온도는 어디인가요?</h2>
+        <p class="text-slate-500 mt-2 text-base">혹시 "주말에 뭐 하지?" 하며 망설이고 있나요? 아래 큐레이션 보드나 인공지능 추천기를 통해 새로운 라이프를 골라보세요! 💙</p>
+      </div>
+
+      <!-- 외향 vs 내향 듀얼 리스트 -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <!-- 외향적 활동 (Active) -->
+        <div class="space-y-6">
+          <h3 class="text-xl font-bold text-brand-600 flex items-center gap-2 border-b border-brand-100 pb-3">
+            <i data-lucide="zap" class="w-5 h-5"></i> 에너지 가득! 외향적 활동 추천 (Active)
+          </h3>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4 hover:shadow-md transition duration-300">
+            <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-2xl shrink-0">🧗‍♀️</div>
+            <div>
+              <h4 class="font-bold text-slate-900">실내 스포츠 클라이밍</h4>
+              <p class="text-slate-500 text-sm mt-1">손끝 발끝에 집중해 홀드를 딛고 오를 때 느끼는 성취감! 성취 지향형인 개발자 동기들과 팀을 이뤄 정상 홀드를 찍어보세요.</p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4 hover:shadow-md transition duration-300">
+            <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center text-2xl shrink-0">🍀</div>
+            <div>
+              <h4 class="font-bold text-slate-900">조깅 & 환경 지킴이 '플로깅'</h4>
+              <p class="text-slate-500 text-sm mt-1">상쾌한 바깥 공기를 마시며 가볍게 달리고, 주변 쓰레기도 줍는 플로깅! 선한 영향력과 유산소 운동의 기쁨을 동시에 누리는 트렌드입니다.</p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4 hover:shadow-md transition duration-300">
+            <div class="w-12 h-12 bg-sky-50 rounded-xl flex items-center justify-center text-2xl shrink-0">🏄‍♀️</div>
+            <div>
+              <h4 class="font-bold text-slate-900">파도를 타는 서핑 (Surfing)</h4>
+              <p class="text-slate-500 text-sm mt-1">답답한 빌딩 숲을 벗어나 드넓은 바다 파도 위에 몸을 실어 보세요. 일상 속 스트레스가 파도 거품과 함께 씻겨져 나갑니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 내향적 활동 (Cozy) -->
+        <div class="space-y-6">
+          <h3 class="text-xl font-bold text-indigo-600 flex items-center gap-2 border-b border-indigo-100 pb-3">
+            <i data-lucide="coffee" class="w-5 h-5"></i> 온전한 휴식! 내향적 활동 추천 (Cozy)
+          </h3>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4 hover:shadow-md transition duration-300">
+            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-2xl shrink-0">🧩</div>
+            <div>
+              <h4 class="font-bold text-slate-900">감성 레고 & 미니어처 조립</h4>
+              <p class="text-slate-500 text-sm mt-1">블록 하나하나를 맞추며 완성되는 나만의 미니 타운. 복잡한 알고리즘을 지우고 오직 손가락 끝의 감각에 몰입해 보세요.</p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4 hover:shadow-md transition duration-300">
+            <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-2xl shrink-0">✍️</div>
+            <div>
+              <h4 class="font-bold text-slate-900">만년필 사락사락, 힐링 필사</h4>
+              <p class="text-slate-500 text-sm mt-1">좋아하는 문학 구절이나 감성 발라드 곡의 가사를 정성스레 종이에 옮겨 적으며, 한 주 동안 지친 마음에 차분한 온기를 선물하세요.</p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4 hover:shadow-md transition duration-300">
+            <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl shrink-0">🪴</div>
+            <div>
+              <h4 class="font-bold text-slate-900">감성 반려식물 가드닝</h4>
+              <p class="text-slate-500 text-sm mt-1">작은 초록 잎사귀가 자라나는 기쁨을 맞이하세요. 손이 가는 대로 물을 주고 햇살을 쬐어주며 조용하게 자아내는 힐링 요법입니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI 맞춤형 취미 추천기 -->
+      <div id="ai-curator-section" class="bg-gradient-to-r from-brand-600 to-indigo-700 rounded-[32px] p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-white/10 rounded-full filter blur-2xl"></div>
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- 입력 패널 -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="flex items-center gap-2">
+              <span class="bg-white/20 px-3.5 py-1.5 rounded-full text-xs font-black tracking-widest uppercase">Gemini AI Power</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            </div>
+            <h3 class="handwriting-font text-3xl md:text-4xl font-bold leading-none">AI 주말 맞춤형<br>취미 큐레이션 🤖</h3>
+            <p class="text-blue-100 text-sm">현재 당신의 온도와 성향을 알려주시면, 인공지능이 1대1 주말 힐링 계획을 특별 처방해 드립니다!</p>
+            
+            <div class="space-y-4 text-slate-800">
+              <div>
+                <label class="block text-white text-xs font-bold mb-1.5">현재 나의 피로도/기분</label>
+                <select id="ai-mood" class="w-full bg-white px-4 py-3 rounded-xl text-sm font-medium outline-none">
+                  <option value="코딩에 완전히 찌들어 뇌가 멈춘 상태 😵‍💫">코딩에 완전히 찌들어 뇌가 멈춘 상태 😵‍💫</option>
+                  <option value="열정이 끓어넘쳐 당장 몸을 움직이고 싶은 상태 🔥">열정이 끓어넘쳐 당장 몸을 움직이고 싶은 상태 🔥</option>
+                  <option value="조용하고 깊이 있는 사색과 힐링을 갈구하는 상태 🌿">조용하고 깊이 있는 사색과 힐링을 갈구하는 상태 🌿</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-white text-xs font-bold mb-1.5">원하는 활동 반경</label>
+                <select id="ai-place" class="w-full bg-white px-4 py-3 rounded-xl text-sm font-medium outline-none">
+                  <option value="집이 최고! 온전한 방구석 🏠">집이 최고! 온전한 방구석 🏠</option>
+                  <option value="바깥 공기 쐬는 상쾌한 야외 ☀️">바깥 공기 쐬는 상쾌한 야외 ☀️</option>
+                  <option value="아늑하고 분위기 좋은 근처 카페/공방 ☕">아늑하고 분위기 좋은 근처 카페/공방 ☕</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-white text-xs font-bold mb-1.5">동행 멤버 유형</label>
+                <select id="ai-companion" class="w-full bg-white px-4 py-3 rounded-xl text-sm font-medium outline-none">
+                  <option value="혼자서 조용히 평화롭게 🧘">혼자서 조용히 평화롭게 🧘</option>
+                  <option value="SSAFY 1반 크루들과 유쾌하게 👥">SSAFY 1반 크루들과 유쾌하게 👥</option>
+                </select>
+              </div>
+              
+              <button onclick="recommendHobbyWithAI()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-extrabold py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                <i data-lucide="wand-2" class="w-5 h-5"></i>
+                <span>나만을 위한 주말 계획 추천받기</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 출력 패널 -->
+          <div class="lg:col-span-7 bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 min-h-[380px] flex flex-col justify-between relative overflow-hidden">
+            <div id="ai-loading" class="absolute inset-0 bg-slate-950/50 backdrop-blur-sm z-20 hidden flex-col items-center justify-center gap-4 text-white">
+              <i data-lucide="loader" class="w-12 h-12 text-yellow-400 animate-spin"></i>
+              <p class="text-sm font-black tracking-wider animate-pulse">Gemini가 최적의 주말 알고리즘을 분석 중입니다...</p>
+            </div>
+
+            <div id="ai-result-box" class="space-y-4 text-slate-100 overflow-y-auto max-h-[340px] pr-2 scrollbar-thin">
+              <div class="text-center py-12 space-y-3">
+                <div class="text-5xl">🧭</div>
+                <h4 class="text-lg font-bold text-white">아직 분석을 진행하지 않았습니다</h4>
+                <p class="text-xs text-blue-200">왼쪽 기분과 취향 필터를 세팅한 뒤 황금빛 매직 버튼을 힘차게 눌러주세요!</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3.5 KEYCAP TO BEAR INTERACTIVE TRANSITION -->
+  <section class="py-16 bg-gradient-to-b from-white to-brand-50/50 flex flex-col items-center justify-center relative overflow-hidden border-y border-slate-100">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-100/30 via-transparent to-transparent"></div>
+    
+    <div class="relative z-10 max-w-lg mx-auto text-center space-y-4 px-4">
+      <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-black bg-brand-100 text-brand-700 tracking-wider uppercase animate-pulse">
+        <i data-lucide="pocket" class="w-3.5 h-3.5"></i> FUN INTERACTIVE ZONE
+      </span>
+      <h3 class="handwriting-font text-3xl font-bold text-slate-950 leading-none">
+        동기들이 개설한 오픈 주말 크루 구경하러 가기!
+      </h3>
+      <p class="text-slate-500 text-xs md:text-sm">
+        아래 기계식 파란색 키캡 버튼을 마우스로 세게 쾅! 눌러보세요.
+      </p>
+    </div>
+
+    <div class="relative w-72 h-56 flex items-center justify-center mt-8">
+      <div id="particle-container" class="absolute inset-0 pointer-events-none"></div>
+
+      <button id="morph-btn" onclick="triggerKeycapMorph()" class="relative focus:outline-none transition-all duration-300 transform hover:scale-105">
+        <!-- 상태 A: 파란색 키캡 블록 -->
+        <div id="keycap-element" class="relative w-32 h-32 bg-gradient-to-b from-brand-500 to-blue-700 rounded-3xl shadow-[0_14px_0_#1d4ed8,0_20px_25px_rgba(30,58,138,0.3)] active:translate-y-[10px] active:shadow-[0_4px_0_#1d4ed8,0_10px_12px_rgba(30,58,138,0.3)] transition-all duration-100 flex flex-col items-center justify-center text-white cursor-pointer select-none">
+          <span class="text-[10px] font-black tracking-widest text-brand-200 uppercase mb-1 animate-pulse">CLICK HERE</span>
+          <span class="font-extrabold text-sm tracking-tighter">클릭해주세요</span>
+          <div class="absolute inset-2.5 border-2 border-brand-300/20 rounded-[18px] pointer-events-none"></div>
+        </div>
+
+        <!-- 상태 B: 귀여운 곰돌이 버튼 -->
+        <div id="bear-element" class="hidden absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 w-32 h-32 cursor-pointer transition-all duration-300 hover:scale-110 active:scale-95">
+          <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-2xl animate-bounce" style="animation-duration: 2s;">
+            <circle cx="25" cy="25" r="14" fill="#854d0e" />
+            <circle cx="25" cy="25" r="8" fill="#fef08a" />
+            <circle cx="75" cy="25" r="14" fill="#854d0e" />
+            <circle cx="75" cy="25" r="8" fill="#fef08a" />
+            <circle cx="50" cy="55" r="34" fill="#a16207" />
+            <ellipse cx="50" cy="65" rx="14" ry="10" fill="#fef08a" />
+            <circle cx="38" cy="48" r="4" fill="#1e293b" />
+            <circle cx="38" cy="47" r="1.5" fill="#ffffff" />
+            <circle cx="62" cy="48" r="4" fill="#1e293b" />
+            <circle cx="62" cy="47" r="1.5" fill="#ffffff" />
+            <polygon points="46,60 54,60 50,65" fill="#1e293b" />
+            <path d="M 45 68 Q 50 71 55 68" stroke="#1e293b" stroke-width="2" fill="none" />
+            <circle cx="25" cy="57" r="4" fill="#f43f5e" opacity="0.75" />
+            <circle cx="75" cy="57" r="4" fill="#f43f5e" opacity="0.75" />
+          </svg>
+          <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-indigo-600 text-white font-black text-[11px] px-3.5 py-1.5 rounded-full shadow-lg whitespace-nowrap animate-pulse">
+            액티브 크루 보러 가기! 🧸
+          </span>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- 4. ACTIVE CREWS SECTION -->
+  <section id="active-hobbies" class="py-24 px-4 max-w-5xl mx-auto space-y-28">
+    <div class="text-center md:text-left mb-16">
+      <h2 class="handwriting-font text-4xl md:text-5xl font-extrabold text-brand-600 flex items-center justify-center md:justify-start gap-3">
+        <span class="p-2.5 bg-brand-100 text-brand-600 rounded-2xl shadow-sm"><i data-lucide="bike" class="w-7 h-7"></i></span>
+        함께 달릴래? 액티브 주말 소모임 크루
+      </h2>
+      <p class="text-slate-500 mt-2 text-base">SSAFY 1반 친구들이 함께 땀 흘리며 달리고 즐길 수 있는 동적 챌린지 모임입니다.</p>
+    </div>
+
+    <!-- 스키 크루 -->
+    <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+      <div class="flex-1 space-y-5 order-2 md:order-1">
+        <span class="text-xs font-bold text-sky-600 tracking-widest uppercase bg-sky-50 border border-sky-100 px-3.5 py-1.5 rounded-full">Active Winter Crew</span>
+        <h3 class="text-3xl md:text-4xl font-black text-slate-900">
+          <span>⛷️ 스노우 라이더스 (설원 정복)</span>
+        </h3>
+        <p class="text-slate-600 leading-relaxed text-base md:text-lg">
+          겨울 주말만 되면 하얀 설원을 향해 떠나는 스키 정복 크루! <br>
+          스피드를 사랑하고 매서운 칼바람 속 쾌감을 즐기는 동기들을 기다리고 있습니다. 카풀과 숙소 쉐어를 통해 부담 없이 가볍게 무주나 엘리시안으로 함께 출발해 봐요.
+        </p>
+      </div>
+      <div class="flex-1 w-full order-1 md:order-2">
+        <div class="relative rounded-[32px] overflow-hidden shadow-2xl group aspect-[4/3] bg-slate-200">
+          <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=800&q=80" 
+               alt="하얀 겨울 설원을 시원하게 가르는 스키어들의 모습" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+               onerror="this.src='https://placehold.co/800x600/3b82f6/ffffff?text=Ski+Crew'">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 러닝 크루 -->
+    <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+      <div class="flex-1 w-full">
+        <div class="relative rounded-[32px] overflow-hidden shadow-2xl group aspect-[4/3] bg-slate-200">
+          <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=800&q=80" 
+               alt="야외를 함께 전력으로 달리고 있는 상쾌한 러너들의 모습" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+               onerror="this.src='https://placehold.co/800x600/ef4444/ffffff?text=Running+Crew'">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+        </div>
+      </div>
+      <div class="flex-1 space-y-5">
+        <span class="text-xs font-bold text-rose-600 tracking-widest uppercase bg-rose-50 border border-rose-100 px-3.5 py-1.5 rounded-full">All Season Running</span>
+        <h3 class="text-3xl md:text-4xl font-black text-slate-900">
+          <span>🏃‍♀️ 광주천 런 브레이커스 (새벽런)</span>
+        </h3>
+        <p class="text-slate-600 leading-relaxed text-base md:text-lg">
+          답답했던 강의실을 벗어나 주말 오전 광주천변을 함께 페이스를 맞춰 뛰는 크루입니다. <br>
+          "1km만 뛰어도 심박수가 머리 끝까지 가요" 하시는 초보 러너부터 노련한 러닝 메이트까지 환영합니다. 뛰고 나서 먹는 주말 브런치는 덤!
+        </p>
+      </div>
+    </div>
+
+    <!-- 물놀이 수영 크루 -->
+    <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+      <div class="flex-1 space-y-5 order-2 md:order-1">
+        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase bg-brand-50 border border-brand-100 px-3.5 py-1.5 rounded-full">Aqua & Healing</span>
+        <h3 class="text-3xl md:text-4xl font-black text-slate-900">
+          <span>🏊‍♀️ 블루 스플래시 (수영장 정기 벙개)</span>
+        </h3>
+        <p class="text-slate-600 leading-relaxed text-base md:text-lg">
+          여름에는 투명하게 반짝이는 수영장에서, 혹은 짜릿함이 폭발하는 물놀이 벙개로 뭉치는 클럽! <br>
+          수영 실력은 필요 없습니다. 물속에서 첨벙거리며 시원하게 힐링하고 한 주간 쌓였던 개발 정체 스트레스를 가볍게 날려버릴 동료들을 모십니다.
+        </p>
+      </div>
+      <div class="flex-1 w-full order-1 md:order-2">
+        <div class="relative rounded-[32px] overflow-hidden shadow-2xl group aspect-[4/3] bg-slate-200">
+          <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" 
+               alt="에메랄드빛 야외 맑은 수영장 풀 전경" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+               onerror="this.src='https://placehold.co/800x600/0ea5e9/ffffff?text=Swimming+Pool'">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CULTURE & MOVIE CRUISE SECTION -->
+  <section id="movies" class="py-24 bg-gradient-to-b from-brand-50/40 to-slate-950 text-white px-4 relative">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-950/20 via-transparent to-transparent"></div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div class="text-center mb-20">
+        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-extrabold bg-indigo-600 text-white mb-4 tracking-widest uppercase shadow-lg shadow-indigo-900/30">Weekend Cinema Cruise</span>
+        <h2 class="handwriting-font text-4xl md:text-5xl font-extrabold text-white flex items-center justify-center gap-3">
+          <span class="p-2.5 bg-slate-800 rounded-2xl text-red-500 shadow-md"><i data-lucide="clapperboard" class="w-7 h-7"></i></span>
+          인생 영화 크루: 매주 찾아오는 방구석 1열
+        </h2>
+        <p class="text-slate-400 mt-3 text-base">액션 영화 매니아와 눈물 한 방울이 필요한 감성 촉촉파들의 영화 공유회입니다.</p>
+      </div>
+
+      <!-- 영화 대형 포스터형 카드 레이아웃 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- 영화 1 : 범죄도시 (액션파) -->
+        <div class="group relative bg-slate-950 rounded-[32px] overflow-hidden border border-slate-800 shadow-2xl flex flex-col justify-end min-h-[580px] transition-all duration-300 hover:-translate-y-3">
+          <div class="absolute inset-0 bg-slate-900 overflow-hidden">
+            <img src="https://img.youtube.com/vi/VFPNzM9SXBw/maxresdefault.jpg" 
+                 alt="마동석 주연 한국영화 범죄도시 실시간 스틸컷" 
+                 class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                 onerror="this.src='https://placehold.co/600x800/1e293b/ffffff?text=The+Outlaws+Ma+Dongseok'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent"></div>
+          </div>
+          <div class="relative z-10 p-8 md:p-10 space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 bg-red-600/90 text-white text-[11px] font-black uppercase tracking-wider rounded">CRIME / COMEDY</span>
+              <span class="text-slate-300 text-xs font-bold">마동석표 원펀치 쾌감 액션 크루 👊</span>
+            </div>
+            <h3 class="text-3xl md:text-4xl font-black text-white tracking-wide">범죄도시 (The Outlaws)</h3>
+            <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+              화끈하게 사이다 터지는 액션과 킬링 타임용 웃음 코드가 필요한 분들! 매주 주말 빔프로젝터에 팝콘을 깔고 마동석 특유의 참교육 액션 명작들을 함께 정주행할 스릴 액션 크루를 정기 모집 중입니다.
+            </p>
+            
+            <!-- 넷플릭스 & 영화추천 하이퍼링크 버튼 목록 -->
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a href="https://www.netflix.com/kr" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2.5 bg-[#E50914] hover:bg-[#B80710] text-white text-xs font-bold rounded-xl transition duration-200 shadow-md">
+                <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                <span>넷플릭스 감상</span>
+              </a>
+              <a href="https://pedia.watcha.com/ko" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-bold rounded-xl border border-slate-700 transition duration-200">
+                <i data-lucide="star" class="w-3.5 h-3.5 text-yellow-400"></i>
+                <span>왓챠피디아 추천</span>
+              </a>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+              <span class="flex items-center gap-1.5 font-bold"><i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i> 사이다 보장 액션 팝콘 톡</span>
+              <span class="font-bold">크루 가입률: 92%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 영화 2 : 7번방의 선물 (감성파) -->
+        <div class="group relative bg-amber-950 rounded-[32px] overflow-hidden border border-amber-900/30 shadow-2xl flex flex-col justify-end min-h-[580px] transition-all duration-300 hover:-translate-y-3">
+          <div class="absolute inset-0 bg-amber-950 overflow-hidden">
+            <img src="https://img.youtube.com/vi/ihRrxbAFByg/maxresdefault.jpg" 
+                 alt="7번방의 선물 영화 류승룡 배우 감동 포스터" 
+                 class="w-full h-full object-cover opacity-55 group-hover:scale-105 transition-transform duration-700"
+                 onerror="this.src='https://placehold.co/600x800/27272a/ffffff?text=Miracle+In+Cell+7+Ryu+Seungryong'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent"></div>
+          </div>
+          <div class="relative z-10 p-8 md:p-10 space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 bg-amber-500/90 text-slate-950 text-[11px] font-black uppercase tracking-wider rounded">DRAMA / MELODRAMA</span>
+              <span class="text-amber-200 text-xs font-bold">휴지 준비 필수! 눈물샘 수문장 🎈</span>
+            </div>
+            <h3 class="text-3xl md:text-4xl font-black text-white tracking-wide">7번방의 선물 (Miracle in Cell No. 7)</h3>
+            <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+              코딩에 지친 마음을 따스한 휴머니즘 감동 코드로 채우는 밤! 잔잔하고 묵직한 가족애와 눈물 없이 볼 수 없는 정통 한국 천만 대작들을 감상하고 밤새 모닥불 감성 대화를 나누실 동기분들을 초대합니다.
+            </p>
+
+            <!-- 넷플릭스 & 영화추천 하이퍼링크 버튼 목록 -->
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a href="https://www.netflix.com/kr" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2.5 bg-[#E50914] hover:bg-[#B80710] text-white text-xs font-bold rounded-xl transition duration-200 shadow-md">
+                <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                <span>넷플릭스 감상</span>
+              </a>
+              <a href="https://pedia.watcha.com/ko" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-bold rounded-xl border border-slate-700 transition duration-200">
+                <i data-lucide="star" class="w-3.5 h-3.5 text-yellow-400"></i>
+                <span>왓챠피디아 추천</span>
+              </a>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+              <span class="flex items-center gap-1.5 font-bold"><i data-lucide="heart" class="w-4 h-4 text-pink-500"></i> 따스하게 위안하는 감성 소모임</span>
+              <span class="font-bold">크루 가입률: 88%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. YOUTUBE INSPIRATION CARD -->
+  <section id="youtube" class="py-24 bg-white px-4 relative">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="handwriting-font text-4xl md:text-5xl font-extrabold text-slate-900 flex items-center justify-center gap-3">
+          <span class="p-2.5 bg-red-100 text-red-600 rounded-2xl"><i data-lucide="youtube" class="w-7 h-7"></i></span>
+          주말엔 이거 보며 뒹굴뒹굴! 미디어 동호회
+        </h2>
+        <p class="text-slate-500 mt-2 text-base">혼자 보기 아까운 보석 같은 크리에이터들을 한데 모았습니다. 아래 전용 썸네일 카드를 클릭해 보세요!</p>
+      </div>
+
+      <!-- 유튜브 추천 라인업 (요청하신 하이퍼링크 완벽 매칭) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- 문복희 먹방 카드 -->
+        <a href="https://www.youtube.com/@EatwithBoki" target="_blank" rel="noopener noreferrer" class="group block bg-gradient-to-b from-orange-50 to-white rounded-[32px] overflow-hidden border border-orange-100 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+          <div class="h-56 overflow-hidden relative bg-orange-100">
+            <img src="https://img.youtube.com/vi/WMIOrxeoYGQ/maxresdefault.jpg" 
+                 alt="문복희 ASMR 힐링 먹방" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 onerror="this.src='https://placehold.co/400x300/fed7aa/ea580c?text=Mukbang'">
+            <div class="absolute top-4 left-4 bg-orange-500 text-white text-xs font-extrabold uppercase px-3 py-1 rounded-full shadow-sm">MUKBANG</div>
+          </div>
+          <div class="p-6 md:p-8 space-y-3">
+            <h4 class="text-2xl font-bold text-slate-900 flex items-center justify-between">
+              <span>문복희</span>
+              <span class="text-xs text-orange-600 font-bold flex items-center gap-1">채널이동 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+            </h4>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              야식 정복 욕구를 채워줄 고화질 ASMR 먹방! 맛있는 레시피와 꿀조합을 공유하는 '야식크루'의 단골 소통 주제입니다.
+            </p>
+          </div>
+        </a>
+
+        <!-- 리쥬라이크 브이로그 카드 -->
+        <a href="https://www.youtube.com/@LIJULIKE" target="_blank" rel="noopener noreferrer" class="group block bg-gradient-to-b from-pink-50 to-white rounded-[32px] overflow-hidden border border-pink-100 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+          <div class="h-56 overflow-hidden relative bg-pink-100">
+            <img src="https://img.youtube.com/vi/G8NMkKtdfWY/maxresdefault.jpg" 
+                 alt="리쥬라이크 패밀리 브이로그" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 onerror="this.src='https://placehold.co/400x300/fbcfe8/db2777?text=Vlog'">
+            <div class="absolute top-4 left-4 bg-pink-500 text-white text-xs font-extrabold uppercase px-3 py-1 rounded-full shadow-sm">FAMILY VLOG</div>
+          </div>
+          <div class="p-6 md:p-8 space-y-3">
+            <h4 class="text-2xl font-bold text-slate-900 flex items-center justify-between">
+              <span>리쥬라이크</span>
+              <span class="text-xs text-pink-600 font-bold flex items-center gap-1">채널이동 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+            </h4>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              러블리한 유준이네 집안 힐링 패밀리 브이로그! 소소하게 소파에 기대어 수다 떠는 힐링 미디어를 좋아하는 분들이 뭉치는 공간입니다.
+            </p>
+          </div>
+        </a>
+
+        <!-- 뽀용뇽 뷰티 추천 카드 -->
+        <a href="https://www.youtube.com/results?search_query=%EB%B7%B0%ED%8B%B0+%EC%9C%A0%ED%8A%9C%EB%B2%84+%EC%B6%94%EC%B2%9C" target="_blank" rel="noopener noreferrer" class="group block bg-gradient-to-b from-purple-50 to-white rounded-[32px] overflow-hidden border border-purple-100 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+          <div class="h-56 overflow-hidden relative bg-purple-100">
+            <img src="https://img.youtube.com/vi/G_wpeu3i4jI/maxresdefault.jpg" 
+                 alt="뽀용뇽 메이크업 영상 썸네일" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 onerror="this.src='https://placehold.co/400x300/e9d5ff/9333ea?text=Beauty'">
+            <div class="absolute top-4 left-4 bg-purple-500 text-white text-xs font-extrabold uppercase px-3 py-1 rounded-full shadow-sm">K-BEAUTY</div>
+          </div>
+          <div class="p-6 md:p-8 space-y-3">
+            <h4 class="text-2xl font-bold text-slate-900 flex items-center justify-between">
+              <span>뽀용뇽 & 소의튜브</span>
+              <span class="text-xs text-purple-600 font-bold flex items-center gap-1">추천검색이동 <i data-lucide="external-link" class="w-3 h-3"></i></span>
+            </h4>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              피부 타입별 정교한 메이크업 꿀팁 정보! 맛집 탐방 후 거울을 보며 공유하는 완벽 퍼스널 화장법을 아낌없이 연구합니다.
+            </p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6.5 BLOG LINK CARD -->
+  <section class="py-16 bg-gradient-to-b from-white to-brand-50/50 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="bg-white rounded-[36px] p-8 md:p-12 shadow-xl border border-slate-100 flex flex-col lg:flex-row gap-10 items-center relative overflow-hidden group">
+        <div class="absolute -right-6 -bottom-6 w-36 h-36 bg-brand-50 rounded-full opacity-60 group-hover:scale-125 transition-transform duration-300"></div>
+        
+        <div class="w-full lg:w-[40%] flex gap-4 shrink-0">
+          <div class="flex-1 h-64 rounded-2xl overflow-hidden shadow-md transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 bg-slate-200">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80" 
+                 alt="화장품과 브러쉬 뷰티" 
+                 class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1 h-64 rounded-2xl overflow-hidden shadow-md transform rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-300 bg-slate-200 mt-6">
+            <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=400&q=80" 
+                 alt="로컬 카페 플레이팅 디저트" 
+                 class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="flex-1 space-y-5">
+          <div class="w-12 h-12 bg-brand-50 rounded-2xl flex items-center justify-center">
+            <i data-lucide="pen-tool" class="w-6 h-6 text-brand-600"></i>
+          </div>
+          <span class="inline-block text-xs font-bold text-brand-600 tracking-wider bg-brand-50 px-3.5 py-1.5 rounded-full">COMMUNITY ARCHIVE</span>
+          <h3 class="handwriting-font text-3xl md:text-4xl font-bold text-slate-900 leading-none">맛집 & 뷰티 기록하고<br>서로 블로그 이웃 맺어요! ✍️</h3>
+          <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+            나 혼자만 알고 있기 너무 아까운 민감 피부용 순한 화장품 리스트부터, 주중 코딩 피로를 눈 녹듯 날려 준 광주 인근 꿀 디저트 맛집 투어 일기까지! 주말 맛집 탐방 블로그 기사들을 작성하고 동기들과 서로 이웃 맺으며 취미 인맥을 무한히 넓혀보세요.
+          </p>
+          <div>
+            <a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-bold bg-brand-600 hover:bg-brand-700 text-white px-6 py-3.5 rounded-full shadow-lg hover:shadow-brand-200 transition-all duration-300 hover:-translate-y-0.5">
+              <span>네이버 블로그 홈 놀러가기</span> 
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. COZY PUB & DRINKING SECTION -->
+  <section id="alcohol" class="py-24 bg-gradient-to-b from-brand-50/50 via-indigo-50/30 to-white px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 mb-4 tracking-widest uppercase shadow-sm">Cozy Pub Cruise</span>
+        <h2 class="handwriting-font text-4xl md:text-5xl font-extrabold text-slate-900 flex items-center justify-center gap-3">
+          <span class="p-2.5 bg-indigo-100 text-indigo-600 rounded-2xl"><i data-lucide="beer" class="w-7 h-7"></i></span>
+          "토요일 저녁 이자카야/치맥 한잔하실 분?"🍶
+        </h2>
+        <p class="text-slate-500 mt-2 text-base">왁자지껄하고 시끄러운 번화가 대신, 은은한 음악 아래서 도란도란 속 깊은 코딩 고충을 나누실 주말 밤 메이트를 기다립니다.</p>
+      </div>
+
+      <!-- 광산구 동별 술집 지도 검색 인터랙티브 보드 -->
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-slate-100 mb-12 max-w-4xl mx-auto">
+        <div class="flex items-center gap-2.5 mb-6">
+          <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600">
+            <i data-lucide="map-pin" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-extrabold text-slate-900 text-base md:text-lg">광산구 동네별 숨은 술집 실시간 탐색 🗺️</h4>
+            <p class="text-xs text-slate-500">SSAFY 광주캠퍼스 주변 광산구 주요 행정동 버튼을 클릭하면, 네이버 지도의 맛집 정보로 즉시 순간 이동합니다.</p>
+          </div>
+        </div>
+        
+        <!-- 광산구 8대 주요 핫플 동네 버튼 그리드 -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <a href="https://map.naver.com/p/search/광주%20광산구%20첨단%20술집?searchType=place" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-50 to-white hover:from-brand-500 hover:to-brand-600 text-slate-700 hover:text-white font-bold rounded-xl border border-brand-100 shadow-sm hover:shadow-brand-200 hover:-translate-y-0.5 transition-all duration-200">
+            <span>📍 첨단지구</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
+          </a>
+          <a href="https://map.naver.com/p/search/광주%20광산구%20수완%20술집?searchType=place" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-50 to-white hover:from-brand-500 hover:to-brand-600 text-slate-700 hover:text-white font-bold rounded-xl border border-brand-100 shadow-sm hover:shadow-brand-200 hover:-translate-y-0.5 transition-all duration-200">
+            <span>📍 수완지구</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
+          </a>
+          <a href="https://map.naver.com/p/search/광주%20광산구%20신창동%20술집?searchType=place" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-50 to-white hover:from-brand-500 hover:to-brand-600 text-slate-700 hover:text-white font-bold rounded-xl border border-brand-100 shadow-sm hover:shadow-brand-200 hover:-translate-y-0.5 transition-all duration-200">
+            <span>📍 신창동</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
+          </a>
+          <a href="https://map.naver.com/p/search/광주%20광산구%20쌍암동%20술집?searchType=place" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-50 to-white hover:from-brand-500 hover:to-brand-600 text-slate-700 hover:text-white font-bold rounded-xl border border-brand-100 shadow-sm hover:shadow-brand-200 hover:-translate-y-0.5 transition-all duration-200">
+            <span>📍 쌍암동</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
+          </a>
+          <a href="https://map.naver.com/p/search/광주%20광산구%20송정동%20술집?searchType=place" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-50 to-white hover:from-brand-500 hover:to-brand-600 text-slate-700 hover:text-white font-bold rounded-xl border border-brand-100 shadow-sm hover:shadow-brand-200 hover:-translate-y-0.5 transition-all duration-200">
+            <span>📍 송정동</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
+          </a>
+          <a href="https://map.naver.com/p/search/광주%20광산구%20우산동%20술집?searchType=place" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-50 to-white hover:from-brand-500 hover:to-brand-600 text-slate-700 hover:text-white font-bold rounded-xl border border-brand-100 shadow-sm hover:shadow-brand-200 hover:-translate-y-0.5 transition-all duration-200">
+            <span>📍 우산동</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
+          </a>
+          <a href="https://map.naver.com/p/search/광주%20광산구%20신가동%20술집?searchType=place" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-50 to-white hover:from-brand-500 hover:to-brand-600 text-slate-700 hover:text-white font-bold rounded-xl border border-brand-100 shadow-sm hover:shadow-brand-200 hover:-translate-y-0.5 transition-all duration-200">
+            <span>📍 신가동</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
+          </a>
+          <a href="https://map.naver.com/p/search/광주%20광산구%20운남동%20술집?searchType=place" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-50 to-white hover:from-brand-500 hover:to-brand-600 text-slate-700 hover:text-white font-bold rounded-xl border border-brand-100 shadow-sm hover:shadow-brand-200 hover:-translate-y-0.5 transition-all duration-200">
+            <span>📍 운남동</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- 이자카야 감성 카드 (고급스러운 칵테일/사케 라운지 바) -->
+        <div class="group bg-white rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 border border-slate-100">
+          <div class="h-60 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=800&q=80" 
+                 alt="은은한 조명이 흐르는 고급스러운 일식 선술집 바 전경" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                 onerror="this.src='https://placehold.co/600x400/22252a/ffffff?text=Premium+Sake+Bar'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <span class="px-3 py-1 bg-amber-500/90 text-slate-950 text-xs font-black rounded-lg">PREMIUM SAKE BAR</span>
+            </div>
+          </div>
+          <div class="p-6 md:p-8 space-y-3">
+            <h3 class="text-xl md:text-2xl font-bold text-slate-900">감성 가득, 은은한 이자카야 사케 한 잔</h3>
+            <p class="text-slate-500 text-sm md:text-base leading-relaxed">
+              목조풍의 정갈한 바 테이블 아래서 따뜻하게 데운 사케를 조그마한 예쁜 잔에 비우며 일주일간 밀려 있던 개발 고민을 정답게 나누고 소통하는 힐링 이자카야 모임입니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 맥주펍 치맥 카드 -->
+        <div class="group bg-white rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 border border-slate-100">
+          <div class="h-60 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1600788886242-5c96aabe3757?auto=format&fit=crop&w=600&q=80" 
+                 alt="황금빛 시원한 생맥주 글라스" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                 onerror="this.src='https://placehold.co/600x400/fbbf24/ffffff?text=Draft+Beer+Pub'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <span class="px-3 py-1 bg-brand-500/90 text-white text-xs font-black rounded-lg">DRAFT BEER & CHICKEN</span>
+            </div>
+          </div>
+          <div class="p-6 md:p-8 space-y-3">
+            <h3 class="text-xl md:text-2xl font-bold text-slate-900">갓 튀긴 치킨과 시원한 크림 치맥펍</h3>
+            <p class="text-slate-500 text-sm md:text-base leading-relaxed">
+              목을 찌르는 청량한 황금빛 크림 생맥주에 노릇하게 잘 구운 치킨 안주! 가볍고 격식 없는 캐주얼한 수다를 나누며 주말 에너지를 재충전하고 싶으신 분은 매주 토요일 치맥 벙개로 모이세요!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 소소한 주말 라운지: BGM & 10 TRACKS PLAYLIST -->
+  <section class="py-20 bg-slate-900 text-white px-4 relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-500/10 rounded-full filter blur-3xl opacity-30"></div>
+    
+    <div class="max-w-5xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <!-- 플레이어 (좌측 5열) -->
+      <div class="lg:col-span-5 bg-slate-950 rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-800 space-y-6">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="flex h-2.5 w-2.5 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-500"></span>
+            </span>
+            <span class="text-xs font-bold text-slate-400 tracking-wider">NOW PLAYING</span>
+          </div>
+          <i data-lucide="music-4" class="w-5 h-5 text-brand-500 animate-bounce"></i>
+        </div>
+
+        <div class="flex flex-col items-center text-center py-4">
+          <div class="w-40 h-40 bg-gradient-to-tr from-brand-600 via-indigo-500 to-pink-500 rounded-full flex items-center justify-center text-4xl shadow-inner relative group mb-6 overflow-hidden">
+            <i data-lucide="disc" id="player-disc-icon" class="w-24 h-24 text-white/80 animate-spin" style="animation-duration: 5s;"></i>
+          </div>
+          <h4 id="player-title" class="font-black text-xl tracking-wide">그때가 좋았어</h4>
+          <p id="player-artist" class="text-sm text-slate-400 mt-1">케이시 (Kassy)</p>
+        </div>
+
+        <div class="flex items-center justify-center gap-6">
+          <button onclick="prevSong()" class="p-3 hover:bg-white/10 rounded-full transition-all"><i data-lucide="skip-back" class="w-5 h-5"></i></button>
+          <button id="player-play-btn" onclick="togglePlay()" class="p-4 bg-brand-500 hover:bg-brand-600 rounded-full transition-all shadow-xl hover:scale-105"><i data-lucide="pause" id="player-play-icon" class="w-6 h-6 text-white"></i></button>
+          <button onclick="nextSong()" class="p-3 hover:bg-white/10 rounded-full transition-all"><i data-lucide="skip-forward" class="w-5 h-5"></i></button>
+        </div>
+
+        <div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div id="player-bar" class="bg-gradient-to-r from-brand-500 to-indigo-500 h-full w-[45%] transition-all duration-300"></div>
+          </div>
+          <div class="flex justify-between text-[11px] text-slate-400 mt-2">
+            <span id="player-time">01:42</span>
+            <span>03:48</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 추천 플레이리스트 10곡 리스트 (우측 7열) -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span id="current-mood-badge" class="inline-block px-3 py-1 rounded-full text-xs font-black bg-brand-500/20 text-brand-400 mb-2 border border-brand-500/30">
+              ☀️ 오늘의 추천: 맑고 청량한 주말 오후
+            </span>
+            <h3 class="text-2xl font-extrabold text-white">
+              오늘의 날씨 & 분위기 맞춤 추천 10곡 🎵
+            </h3>
+            <p id="current-mood-desc" class="text-slate-400 text-sm mt-1">
+              그날의 기온, 날씨, 감성 분위기에 맞춰 선별해 드리는 1반 메이트 전용 힐링 테마송 리스트입니다.
+            </p>
+          </div>
+          <button onclick="shuffleAndRecommend()" class="flex items-center gap-1.5 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold border border-slate-700 transition shrink-0 shadow-lg">
+            <i data-lucide="rotate-cw" class="w-3.5 h-3.5 animate-spin" style="animation-duration: 4s;"></i>
+            <span>추천곡 다시 받기</span>
+          </button>
+        </div>
+
+        <!-- 동적으로 추천 10곡이 그려질 영역 -->
+        <div id="playlist-container" class="bg-slate-950/60 rounded-3xl p-4 border border-slate-800 max-h-[380px] overflow-y-auto space-y-2 pr-2">
+          <!-- JS를 통해 실시간으로 10곡 리스트가 들어갑니다 -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. REAL-TIME MATCHING BOARD & GUESTBOOK (주말 메이트 매칭 창구) -->
+  <section id="talk" class="py-24 px-4 max-w-4xl mx-auto">
+    <div class="glass-card rounded-[44px] p-8 md:p-14 shadow-2xl border border-brand-100 text-center relative overflow-hidden">
+      <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-100 rounded-full opacity-55 filter blur-2xl"></div>
+      
+      <div class="max-w-2xl mx-auto space-y-5">
+        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-extrabold bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-md">SSAFY MATCHMAKER</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">우리 주말에 같이 취미 할래?</h2>
+        <p class="text-slate-500 text-base md:text-lg leading-relaxed">
+          새롭게 찾아낸 즐거움을 친구들에게 자랑하고 함께할 동료를 모집해 보세요! <br>
+          **`[모집중]` / `[취미자랑]` / `[정보공유]`** 카테고리를 선택하고 자유롭게 글을 써주세요.
+        </p>
+      </div>
+
+      <!-- 입력 Form (AI 글다듬기 탑재) -->
+      <form id="hobby-form" onsubmit="submitMessage(event)" class="mt-10 max-w-lg mx-auto bg-white p-6 rounded-3xl shadow-lg border border-slate-100 space-y-5 text-left relative z-10">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">이름 (또는 닉네임)</label>
+          <input id="form-name" type="text" required placeholder="예시: 광주1반 김싸피" 
+            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:border-brand-500 focus:bg-white rounded-xl text-sm transition outline-none">
+        </div>
+        
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">소통 테마 선택</label>
+          <div class="grid grid-cols-3 gap-2.5">
+            <button type="button" onclick="selectCategory('모집중', this)" class="category-btn py-2.5 rounded-xl text-xs font-bold text-center border transition border-brand-500 bg-brand-500 text-white flex items-center justify-center gap-1">
+              📢 모집중
+            </button>
+            <button type="button" onclick="selectCategory('취미자랑', this)" class="category-btn py-2.5 rounded-xl text-xs font-bold text-center border border-slate-200 text-slate-600 hover:bg-slate-50 transition flex items-center justify-center gap-1">
+              ✨ 취미자랑
+            </button>
+            <button type="button" onclick="selectCategory('정보공유', this)" class="category-btn py-2.5 rounded-xl text-xs font-bold text-center border border-slate-200 text-slate-600 hover:bg-slate-50 transition flex items-center justify-center gap-1">
+              💡 정보공유
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">이야기 적기</label>
+            <!-- AI 글다듬기 트리거 버튼 -->
+            <button type="button" onclick="polishTextWithAI()" class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-extrabold transition duration-200">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-600"></i>
+              <span>AI 인싸체로 다듬기</span>
+            </button>
+          </div>
+          <textarea id="form-text" required rows="3" placeholder="이번 주말 맛집 벙개 모집, 가입하고 싶은 크루 후기, 새로 도전해 본 주말 취미에 대한 후기 등 자유롭게 적어보세요! (텍스트 입력 후 위 AI 버튼을 누르면 인싸 카피라이팅이 완성됩니다!)" 
+            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:border-brand-500 focus:bg-white rounded-xl text-sm transition outline-none resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-600 to-indigo-600 text-white font-bold rounded-xl shadow-lg hover:shadow-brand-200 transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-0.5">
+          <span>소중한 소통 카드 등록하기</span>
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </form>
+
+      <!-- 방명록 동적 출력 영역 -->
+      <div class="mt-14 text-left">
+        <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-5 flex items-center gap-1.5">
+          <i data-lucide="message-square" class="w-4.5 h-4.5 text-brand-500 animate-pulse"></i>
+          주말 실시간 소통 피드 (<span id="board-count">3</span>)
+        </h3>
+        
+        <div id="board-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5 max-h-[420px] overflow-y-auto pr-2">
+          <!-- 기본 피드 데이터 -->
+          <div class="bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 rounded-2xl p-5 shadow-sm relative hover:scale-[1.03] transition-transform">
+            <span class="absolute top-4 right-4 text-[10px] font-black text-emerald-600 tracking-wide uppercase px-2 py-0.5 rounded-full bg-emerald-100/50">모집중</span>
+            <h4 class="font-bold text-slate-800 text-sm">임러너 🏃‍♀️</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">이번 주 토요일 오전에 광주천 가볍게 5km 뛸 분 계실까요? 천천히 뛰니까 부담 없이 연락 주세요!</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-indigo-50 to-white border border-indigo-100 rounded-2xl p-5 shadow-sm relative hover:scale-[1.03] transition-transform">
+            <span class="absolute top-4 right-4 text-[10px] font-black text-indigo-600 tracking-wide uppercase px-2 py-0.5 rounded-full bg-indigo-100/50">취미자랑</span>
+            <h4 class="font-bold text-slate-800 text-sm">레고매니아 🧩</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">주말 이틀 밤새워서 완성한 고풍스러운 레고 중세 성 자랑합니다! 취미 없으신 분들 조립 시작해보세요!</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-amber-50 to-white border border-amber-100 rounded-2xl p-5 shadow-sm relative hover:scale-[1.03] transition-transform">
+            <span class="absolute top-4 right-4 text-[10px] font-black text-amber-600 tracking-wide uppercase px-2 py-0.5 rounded-full bg-amber-100/50">정보공유</span>
+            <h4 class="font-bold text-slate-800 text-sm">양림동투어 ☕</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">양림동 골목 구석에 숨겨진 신상 한옥 타르트 카페 다녀왔어요! 조용해서 필사나 레고 조립하기 최적의 장소입니다.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer class="bg-slate-950 text-slate-400 py-16 px-4 text-center border-t border-slate-900">
+    <div class="max-w-5xl mx-auto space-y-4">
+      <h3 class="fancy-font text-xl font-bold text-white flex items-center justify-center gap-2">
+        <span>Hobby Bridge</span>
+      </h3>
+      <p class="text-xs max-w-md mx-auto text-slate-500 leading-relaxed">
+        이 웹사이트는 SSAFY 광주 1반 동료들과 주말 일상 소통 및 건강한 취미 모임 장려를 위해 순수 HTML, CSS, JS 및 Gemini AI API 연계를 바탕으로 정성껏 제작되었습니다.
+      </p>
+      <div class="pt-6 text-[10px] text-slate-600">
+        &copy; 2026 Hobby Bridge. Designed with 💙 for SSAFY Gwangju Class 1.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Logic -->
+  <script>
+    // Lucide 아이콘 초기화
+    lucide.createIcons();
+
+    // 1. 오늘의 추천 노래 10곡 데이터베이스 및 랜덤 분위기 매칭 엔진
+    const songPool = [
+      { title: "그때가 좋았어", artist: "케이시 (Kassy)" },
+      { title: "끝말잇기", artist: "TOIL (Feat. 염따, Skinny Brown)" },
+      { title: "너의 모든 순간", artist: "성시경" },
+      { title: "비도 오고 그래서", artist: "헤이즈 (Heize)" },
+      { title: "밤편지", artist: "아이유 (IU)" },
+      { title: "모든 날, 모든 순간", artist: "폴킴 (Paul Kim)" },
+      { title: "야생화", artist: "박효신" },
+      { title: "Melody", artist: "애쉬 아일랜드 (ASH ISLAND)" },
+      { title: "아파트 (Feat. 우원재)", artist: "기리보이" },
+      { title: "사계 (Four Seasons)", artist: "태연 (TAEYEON)" },
+      { title: "주저하는 연인들을 위해", artist: "잔나비" },
+      { title: "취기를 빌려", artist: "산들 (Sandeul)" },
+      { title: "봄날", artist: "방탄소년단 (BTS)" },
+      { title: "어떻게 이별까지 사랑하겠어", artist: "AKMU (악뮤)" },
+      { title: "흔들리는 꽃들 속에서...", artist: "장범준" },
+      { title: "너를 만나", artist: "폴킴 (Paul Kim)" },
+      { title: "아로하", artist: "조정석" },
+      { title: "Ditto", artist: "NewJeans" },
+      { title: "Hype Boy", artist: "NewJeans" },
+      { title: "소나기", artist: "이클립스 (ECLIPSE)" },
+      { title: "Love Lee", artist: "AKMU (악뮤)" },
+      { title: "우주를 줄게", artist: "볼빨간사춘기" },
+      { title: "밤하늘의 별을(2020)", artist: "경서" },
+      { title: "대낮에 한 이별", artist: "박진영 (Feat. 선예)" },
+      { title: "선재 업고 튀어 소나기", artist: "이클립스" }
+    ];
+
+    const moods = [
+      { emoji: "☀️", label: "맑고 청량한 주말 오후", desc: "기분 좋게 따스한 햇살 가득한 날에 어울리는 추천곡" },
+      { emoji: "☔", label: "비가 사락사락 내리는 저녁", desc: "창밖 빗소리와 차분하게 귀를 채워줄 촉촉한 감성곡" },
+      { emoji: "💻", label: "코딩 끝! 새벽 힐링 룸", desc: "치열했던 알고리즘을 지우며 새벽 한가운데서 듣기 좋은 곡" },
+      { emoji: "☕", label: "아늑하고 따스한 동명동 카페", desc: "차 한 잔 마시며 가만히 사색에 잠기기 딱 좋은 차분한 곡" },
+      { emoji: "⛄", label: "포근하고 은은한 겨울 벽난로", desc: "따스한 이불 속에서 호호 불며 듣는 포근발랄 트랙" }
+    ];
+
+    let playlist = []; // 동적으로 변경될 10곡 추천 리스트
+    let currentSongIndex = 0;
+    let isPlaying = true; // 디스크 회전 및 플레이어 재생바 가시성 연동
+
+    // 날씨 & 분위기 맞춤곡 10곡 랜덤 생성 함수
+    function shuffleAndRecommend() {
+      // 1. 랜덤 분위기 선택
+      const mood = moods[Math.floor(Math.random() * moods.length)];
+      document.getElementById('current-mood-badge').innerHTML = `${mood.emoji} 오늘의 추천: ${mood.label}`;
+      document.getElementById('current-mood-desc').innerText = mood.desc;
+
+      // 2. 전체 풀에서 무작위 10곡 비복원 추출
+      const shuffled = [...songPool].sort(() => 0.5 - Math.random());
+      playlist = shuffled.slice(0, 10);
+
+      // 3. 우측 플레이리스트 돔(DOM) 렌더링
+      const container = document.getElementById('playlist-container');
+      container.innerHTML = '';
+      
+      playlist.forEach((song, index) => {
+        const button = document.createElement('button');
+        button.onclick = () => playTrack(index);
+        button.className = "w-full text-left track-item flex items-center justify-between p-3.5 hover:bg-slate-800/40 rounded-xl border border-transparent text-slate-300 transition-all";
+        button.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold text-slate-500 w-4">${String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">${escapeHtml(song.title)}</h4>
+              <p class="text-xs text-slate-400">${escapeHtml(song.artist)}</p>
+            </div>
+          </div>
+          <span class="text-xs text-slate-500">추천곡</span>
+        `;
+        container.appendChild(button);
+      });
+
+      // 4. 초기곡 설정 및 디스플레이 동기화
+      currentSongIndex = 0;
+      updatePlayer();
+      lucide.createIcons();
+    }
+
+    function updatePlayer() {
+      if (playlist.length === 0) return;
+      document.getElementById('player-title').innerText = playlist[currentSongIndex].title;
+      document.getElementById('player-artist').innerText = playlist[currentSongIndex].artist;
+      
+      const ranPercent = currentSongIndex === 0 ? "45%" : Math.floor(Math.random() * 80 + 10) + "%";
+      const ranMin = "0" + Math.floor(Math.random() * 3 + 1);
+      const ranSec = Math.floor(Math.random() * 50 + 10);
+      document.getElementById('player-bar').style.width = ranPercent;
+      document.getElementById('player-time').innerText = `${ranMin}:${ranSec}`;
+
+      const items = document.querySelectorAll('.track-item');
+      items.forEach((item, index) => {
+        if (index === currentSongIndex) {
+          item.className = "w-full text-left track-item flex items-center justify-between p-3.5 bg-brand-500/20 rounded-xl border border-brand-500/30 text-white transition-all";
+          const badge = item.querySelector('span:last-child');
+          if (badge) {
+            badge.innerText = "NOW";
+            badge.className = "text-[10px] bg-brand-500 text-white font-black uppercase px-2.5 py-0.5 rounded-full";
+          }
+        } else {
+          item.className = "w-full text-left track-item flex items-center justify-between p-3.5 hover:bg-slate-800/40 rounded-xl border border-transparent text-slate-300 transition-all";
+          const badge = item.querySelector('span:last-child');
+          if (badge) {
+            badge.innerText = "추천곡";
+            badge.className = "text-xs text-slate-500";
+          }
+        }
+      });
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      const icon = document.getElementById('player-play-icon');
+      if (isPlaying) {
+        icon.setAttribute('data-lucide', 'pause');
+        document.getElementById('player-disc-icon').style.animationPlayState = 'running';
+      } else {
+        icon.setAttribute('data-lucide', 'play');
+        document.getElementById('player-disc-icon').style.animationPlayState = 'paused';
+      }
+      lucide.createIcons();
+    }
+
+    function nextSong() {
+      currentSongIndex = (currentSongIndex + 1) % playlist.length;
+      updatePlayer();
+      if (!isPlaying) togglePlay();
+    }
+
+    function prevSong() {
+      currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+      updatePlayer();
+      if (!isPlaying) togglePlay();
+    }
+
+    function playTrack(index) {
+      currentSongIndex = index;
+      updatePlayer();
+      if (!isPlaying) togglePlay();
+    }
+
+    // 초기 실행 시 1회 랜덤 플레이리스트 추천 생성
+    window.onload = function() {
+      shuffleAndRecommend();
+    };
+
+    // 2. 키캡 모핑 및 곰돌이 캐릭터 전환 액션 로직
+    function triggerKeycapMorph() {
+      const keycap = document.getElementById('keycap-element');
+      const bear = document.getElementById('bear-element');
+      const particles = document.getElementById('particle-container');
+
+      if (keycap.classList.contains('hidden')) {
+        const activeSection = document.getElementById('active-hobbies');
+        if (activeSection) {
+          activeSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        return;
+      }
+
+      keycap.style.transform = 'translateY(10px) scale(0.95)';
+      
+      setTimeout(() => {
+        keycap.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        keycap.style.transform = 'translateY(-140px) rotate(360deg) scale(0.2)';
+        keycap.style.opacity = '0';
+
+        for (let i = 0; i < 25; i++) {
+          createParticle(particles);
+        }
+
+        setTimeout(() => {
+          keycap.classList.add('hidden');
+          bear.classList.remove('hidden');
+          
+          bear.style.opacity = '0';
+          bear.style.transform = 'translate(-50%, 60px) scale(0.3)';
+          bear.offsetHeight; // 강제 리플로우
+
+          bear.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.5)';
+          bear.style.opacity = '1';
+          bear.style.transform = 'translate(-50%, 0) scale(1.1)';
+          
+          setTimeout(() => {
+            bear.style.transform = 'translate(-50%, 0) scale(1)';
+          }, 300);
+
+        }, 350);
+
+      }, 100);
+    }
+
+    function createParticle(parent) {
+      const colors = ['#3b82f6', '#fbbf24', '#f43f5e', '#10b981', '#a855f7', '#06b6d4'];
+      const dot = document.createElement('div');
+      const size = Math.random() * 8 + 6;
+      
+      dot.className = "absolute rounded-full";
+      dot.style.width = `${size}px`;
+      dot.style.height = `${size}px`;
+      dot.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      dot.style.left = '50%';
+      dot.style.top = '50%';
+      dot.style.transform = 'translate(-50%, -50%)';
+
+      parent.appendChild(dot);
+
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = Math.random() * 110 + 60;
+      const x = Math.cos(angle) * velocity;
+      const y = Math.sin(angle) * velocity - 40;
+
+      dot.animate([
+        { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+        { transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(0)`, opacity: 0 }
+      ], {
+        duration: Math.random() * 500 + 400,
+        easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)',
+        fill: 'forwards'
+      });
+
+      setTimeout(() => {
+        dot.remove();
+      }, 1000);
+    }
+
+    // 3. 소통 카테고리 필터 및 메시지 전달 로직
+    let selectedCategory = '모집중';
+
+    function selectCategory(category, element) {
+      selectedCategory = category;
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => {
+        btn.className = "category-btn py-2.5 rounded-xl text-xs font-bold text-center border border-slate-200 text-slate-600 hover:bg-slate-50 transition flex items-center justify-center gap-1";
+      });
+      
+      let colorClass = "";
+      if (category === '모집중') {
+        colorClass = "border-brand-500 bg-brand-500 text-white";
+      } else if (category === '취미자랑') {
+        colorClass = "border-indigo-500 bg-indigo-500 text-white";
+      } else {
+        colorClass = "border-amber-500 bg-amber-500 text-white";
+      }
+      element.className = `category-btn py-2.5 rounded-xl text-xs font-bold text-center border transition ${colorClass} flex items-center justify-center gap-1`;
+    }
+
+    let postsCount = 3;
+
+    function submitMessage(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('form-name').value;
+      const text = document.getElementById('form-text').value;
+
+      if (!name || !text) return;
+
+      let themeBg = "";
+      let themeBadge = "";
+      if (selectedCategory === '모집중') {
+        themeBg = "from-emerald-50 to-white border-emerald-100";
+        themeBadge = "text-emerald-600 bg-emerald-100/50";
+      } else if (selectedCategory === '취미자랑') {
+        themeBg = "from-indigo-50 to-white border-indigo-100";
+        themeBadge = "text-indigo-600 bg-indigo-100/50";
+      } else {
+        themeBg = "from-amber-50 to-white border-amber-100";
+        themeBadge = "text-amber-600 bg-amber-100/50";
+      }
+
+      const newCard = document.createElement('div');
+      newCard.className = `bg-gradient-to-br ${themeBg} border rounded-2xl p-5 shadow-md relative transition-all duration-300 hover:scale-[1.03] animate-bounce-short`;
+      newCard.innerHTML = `
+        <span class="absolute top-4 right-4 text-[10px] font-black ${themeBadge} tracking-wide uppercase px-2 py-0.5 rounded-full">${selectedCategory}</span>
+        <h4 class="font-bold text-slate-800 text-sm">${escapeHtml(name)}</h4>
+        <p class="text-xs text-slate-500 mt-2 leading-relaxed">${escapeHtml(text)}</p>
+      `;
+
+      const grid = document.getElementById('board-grid');
+      grid.insertBefore(newCard, grid.firstChild);
+
+      postsCount++;
+      document.getElementById('board-count').innerText = postsCount;
+
+      document.getElementById('form-name').value = '';
+      document.getElementById('form-text').value = '';
+      
+      grid.scrollTop = 0;
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // 4. GEMINI API 통합 로직
+    const apiKey = ""; 
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+    async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+      try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+          if (response.status === 429 && retries > 0) {
+            await new Promise(res => setTimeout(res, delay));
+            return fetchWithBackoff(url, options, retries - 1, delay * 2);
+          }
+          throw new Error(`API Error: ${response.status}`);
+        }
+        return response;
+      } catch (err) {
+        if (retries > 0) {
+          await new Promise(res => setTimeout(res, delay));
+          return fetchWithBackoff(url, options, retries - 1, delay * 2);
+        }
+        throw err;
+      }
+    }
+
+    function parseSimpleMarkdown(text) {
+      return text
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-yellow-300 font-extrabold">$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>');
+    }
+
+    async function recommendHobbyWithAI() {
+      const mood = document.getElementById('ai-mood').value;
+      const place = document.getElementById('ai-place').value;
+      const companion = document.getElementById('ai-companion').value;
+      
+      const loader = document.getElementById('ai-loading');
+      const resultBox = document.getElementById('ai-result-box');
+
+      loader.classList.remove('hidden');
+
+      const systemPrompt = "당신은 SSAFY 광주 1반 동료들을 위한 맞춤형 주말 취미 설계사입니다. 사용자가 입력한 기분, 원하는 공간 범위, 동반 구성원에 맞게 완벽한 한국어 주말 계획 처방전을 발급해 주세요. 20대 대학생 및 하드코어 코더/개발자 감성에 맞춰 엄청 재치있고 청량한 어조(반말 혹은 귀여운 말투 '~해봐!', '~어때?' 등 혼용)로 작성해 주세요. 처방전에 포함될 항목: 1) 추천 취미 및 한줄 소개, 2) 상세한 주말 힐링 테마 시나리오(시간별 혹은 액션별), 3) 주간 코딩 스트레스 디버깅 팁. 마지막 줄에는 이모지와 함께 핵심 요약 슬로건을 눈에 띄게 한 줄로 명시해 주세요. 마크다운 볼드(**) 기호를 적극 활용하세요.";
+      const userPrompt = `기분: ${mood}\n원하는 장소: ${place}\n동행자 유형: ${companion}`;
+
+      const payload = {
+        contents: [{ parts: [{ text: userPrompt }] }],
+        systemInstruction: {
+          parts: [{ text: systemPrompt }]
+        }
+      };
+
+      try {
+        const response = await fetchWithBackoff(geminiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        const outputText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+        if (outputText) {
+          resultBox.innerHTML = `
+            <div class="space-y-4 animate-fade-in">
+              <div class="flex items-center gap-2 border-b border-white/20 pb-2">
+                <i data-lucide="sparkles" class="w-5 h-5 text-yellow-300"></i>
+                <h4 class="font-bold text-white text-base">Gemini 맞춤 처방전 도착! 📜</h4>
+              </div>
+              <p class="text-sm leading-relaxed text-slate-100">${parseSimpleMarkdown(outputText)}</p>
+            </div>
+          `;
+          lucide.createIcons();
+        } else {
+          throw new Error("결과 파싱 에러");
+        }
+      } catch (error) {
+        console.error(error);
+        resultBox.innerHTML = `
+          <div class="text-center py-10 space-y-2 text-rose-300">
+            <i data-lucide="alert-circle" class="w-12 h-12 mx-auto"></i>
+            <h4 class="font-bold">일시적인 네트워크 지연</h4>
+            <p class="text-xs text-rose-100">AI 추천기를 잠시 후 다시 시도해 주세요!</p>
+          </div>
+        `;
+        lucide.createIcons();
+      } finally {
+        loader.classList.add('hidden');
+      }
+    }
+
+    async function polishTextWithAI() {
+      const textInput = document.getElementById('form-text');
+      const originalText = textInput.value;
+
+      if (!originalText.trim()) {
+        textInput.placeholder = "다듬을 텍스트가 비어 있습니다! 한 문장이라도 적은 뒤에 눌러주세요 🥺";
+        textInput.focus();
+        return;
+      }
+
+      textInput.disabled = true;
+      textInput.value = "AI 카피라이터가 인싸력을 주입하고 있습니다... 잠시만 기다려주세요! ⚡";
+
+      const systemPrompt = "당신은 SSAFY 광주 1반 취미 메이트 모집 전용 인싸 카피라이터입니다. 사용자가 적은 단순한 주말 모집이나 자랑 일기 텍스트를, SSAFY 동기들이 당장 참가하고 싶어 안달나도록 재치 넘치고 위트 있는 20대 대학생/개발자 감성(디버깅 완료, 알고리즘 피로, 1반 화이팅 등 SSAFY 동기 밈 활용)으로 한글 리라이팅을 해주세요. 군더더기 서론이나 부가적인 설명은 일절 생략하고 오직 본문 텍스트 결과(이모지 가득 포함, 3줄 이내)만 즉시 출력해야 합니다.";
+      const userPrompt = `원본 글: ${originalText}`;
+
+      const payload = {
+        contents: [{ parts: [{ text: userPrompt }] }],
+        systemInstruction: {
+          parts: [{ text: systemPrompt }]
+        }
+      };
+
+      try {
+        const response = await fetchWithBackoff(geminiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        const polishedText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+        if (polishedText) {
+          textInput.value = polishedText.trim();
+        } else {
+          throw new Error("파싱 에러");
+        }
+      } catch (error) {
+        console.error(error);
+        textInput.value = originalText;
+      } finally {
+        textInput.disabled = false;
+        textInput.focus();
+      }
+    }
+  </script>
+
+  <!-- 테일윈드 짧은 바운스 애니메이션 -->
+  <style>
+    @keyframes bounce-short {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .animate-bounce-short {
+      animation: bounce-short 0.4s ease-out 1;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+  </style>
+</body>
+</html>
